@@ -1,4 +1,4 @@
-# 11-785 Deep Learning Project
+# 11-785 Deep Learning Project Proposal
 
 ## Please describe in a few sentences the task you propose to address
 - CycleGAN
