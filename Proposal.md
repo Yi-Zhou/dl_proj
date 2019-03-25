@@ -2,9 +2,9 @@
 
 ## Please describe in a few sentences the task you propose to address
 - CycleGAN
-CycleGAN has achieved a great result in unsupervised style transfer recently. However, if we want to transfer a horse to zebra, it applies the stripes to not only the horse body, but also the background and even the human riding the horse. We suppose the CycleGAN network could render better result if we provide it with an instance-level segmentation of the input image. Mask R-
-- CNN
-CNN is widely used for object detection and instance segmentation. It can be applied to resolve the ambiguity in the image for CycleGAN to generate more precise transformation. We plan to combine the two neural networks, by feeding in the segmentation of the input image (from Mask R-CNN) into CycleGAN in addition to the input image to handle more complex cases of style transfer.
+CycleGAN has achieved a great result in unsupervised style transfer recently. However, if we want to transfer a horse to zebra, it applies the stripes to not only the horse body, but also the background and even the human riding the horse. We suppose the CycleGAN network could render better result if we provide it with an instance-level segmentation of the input image. 
+- Mask R-CNN
+Mask R-CNN is widely used for object detection and instance segmentation. It can be applied to resolve the ambiguity in the image for CycleGAN to generate more precise transformation. We plan to combine the two neural networks, by feeding in the segmentation of the input image (from Mask R-CNN) into CycleGAN in addition to the input image to handle more complex cases of style transfer.
 
 ---
 ## Please refer some papers addressing a similar task
