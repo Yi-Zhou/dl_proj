@@ -38,20 +38,20 @@
 ## Please describe your proposed approach for the project
 - Training
 
-1.apply segmentation to the input image with Mask R-CNN. 
-2.Then we concatenate the input image with a new channel of the pixel-by-pixel semantic segmentation result.
-3.Finally train CycleGan with images input containing segmentation information.
+  1. Apply segmentation to the input image with Mask R-CNN. 
+  2. Then we concatenate the input image with a new channel of the pixel-by-pixel semantic segmentation result.
+  3. Finally train CycleGan with images input containing segmentation information.
 
 - Inferencing:
 
-1.Apply segmentation to the input
-2.Concatenate the input with semantic segmentation and do the style-transfer
+  1. Apply segmentation to the input
+  2. Concatenate the input with semantic segmentation and do the style-transfer
 
 ---
 ## Did you think about the feasibility of your task			
 - We can adopt a Mask R-CNN that was pre-trained on COCO dataset.
 
-We will need to modify the architecture of CycleGAN as there is more channels in the input. For starters, we can train a model for horse <---> zebra conversion with a manageable portion of the imagenet. 
+  We will need to modify the architecture of CycleGAN as there is more channels in the input. For starters, we can train a model for horse <---> zebra conversion with a manageable portion of the imagenet. 
 
 - And test our model on some cases where CycleGAN will make mistakes and see if Mask R-CNN would amortize those mistakes. The original cycleGAN will be used as a baseline with which we will compare our model.
 
