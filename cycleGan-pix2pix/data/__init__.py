@@ -10,9 +10,13 @@
 Now you can use the dataset class by specifying flag '--dataset_mode dummy'.
 See our template dataset class 'template_dataset.py' for more details.
 """
+import numpy as np
+import torch
 import importlib
 import torch.utils.data
 from data.base_dataset import BaseDataset
+
+import multiprocessing
 
 
 def find_dataset_using_name(dataset_name):
@@ -58,6 +62,19 @@ def create_dataset(opt):
     dataset = data_loader.load_data()
     return dataset
 
+#
+# ################# read in images with mask channel
+# class MaskDataSet(torch.utils.data.Dataset):
+#     def __init__(self, images_file):
+#         self.images = np.load(images_file)
+#
+#     def __len__(self):
+#         return len(self.images)
+#
+#     def __getitem__(self, idx):
+#         img = torch.from_numpy(self.images[idx])
+#         return img
+
 
 class CustomDatasetDataLoader():
     """Wrapper class of Dataset class that performs multi-threaded data loading"""
@@ -71,12 +88,13 @@ class CustomDatasetDataLoader():
         self.opt = opt
         dataset_class = find_dataset_using_name(opt.dataset_mode)
         self.dataset = dataset_class(opt)
+        # self.dataset = MaskDataSet(opt.images_file)   # usful if reading from a single file
         print("dataset [%s] was created" % type(self.dataset).__name__)
         self.dataloader = torch.utils.data.DataLoader(
             self.dataset,
             batch_size=opt.batch_size,
             shuffle=not opt.serial_batches,
-            num_workers=int(opt.num_threads))
+            num_workers=multiprocessing.cpu_count())
 
     def load_data(self):
         return self
