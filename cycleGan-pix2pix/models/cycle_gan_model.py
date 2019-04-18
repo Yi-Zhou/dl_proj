@@ -105,12 +105,14 @@ class CycleGANModel(BaseModel):
         The option 'direction' can be used to swap domain A and domain B.
         """
         AtoB = self.opt.direction == 'AtoB'
+#position 1
         self.real_A = input['A' if AtoB else 'B'].to(self.device)
         self.real_B = input['B' if AtoB else 'A'].to(self.device)
         self.image_paths = input['A_paths' if AtoB else 'B_paths']
 
     def forward(self):
         """Run forward pass; called by both functions <optimize_parameters> and <test>."""
+# do we need to utilize mask in this phase
         self.fake_B = self.netG_A(self.real_A)  # G_A(A)
         self.rec_A = self.netG_B(self.fake_B)   # G_B(G_A(A))
         self.fake_A = self.netG_B(self.real_B)  # G_B(B)
@@ -140,11 +142,13 @@ class CycleGANModel(BaseModel):
 
     def backward_D_A(self):
         """Calculate GAN loss for discriminator D_A"""
+#position 2, real_B chaneel might be need to trim
         fake_B = self.fake_B_pool.query(self.fake_B)
         self.loss_D_A = self.backward_D_basic(self.netD_A, self.real_B, fake_B)
 
     def backward_D_B(self):
         """Calculate GAN loss for discriminator D_B"""
+#position 2, real_A chaneel might be need to trim
         fake_A = self.fake_A_pool.query(self.fake_A)
         self.loss_D_B = self.backward_D_basic(self.netD_B, self.real_A, fake_A)
 
@@ -154,6 +158,7 @@ class CycleGANModel(BaseModel):
         lambda_A = self.opt.lambda_A
         lambda_B = self.opt.lambda_B
         # Identity loss
+#position 2, real_B chaneel might be need to trim
         if lambda_idt > 0:
             # G_A should be identity if real_B is fed: ||G_A(B) - B||
             self.idt_A = self.netG_A(self.real_B)
