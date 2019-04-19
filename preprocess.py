@@ -1,8 +1,8 @@
-#!/usr/bin/env python
 # coding: utf-8
 
 # In[1]:
 
+print("start")
 
 import os
 import sys
@@ -26,7 +26,8 @@ from mrcnn import visualize
 sys.path.append(os.path.join(ROOT_DIR, "samples/coco/"))  # To find local version
 import coco
 
-get_ipython().run_line_magic('matplotlib', 'inline')
+#get_ipython().run_line_magic('matplotlib', 'inline')
+print("import ready")
 
 # Directory to save logs and trained model
 MODEL_DIR = os.path.join(ROOT_DIR, "logs")
@@ -73,6 +74,7 @@ config.display()
 # In[4]:
 
 
+print("loading weights...")
 # Create model object in inference mode.
 model = modellib.MaskRCNN(mode="inference", model_dir=MODEL_DIR, config=config)
 
