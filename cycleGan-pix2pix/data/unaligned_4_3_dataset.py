@@ -4,6 +4,7 @@ from data.image_folder import make_dataset
 from PIL import Image
 import random
 import numpy as np
+import tensor
 
 
 class UnalignedDataset(BaseDataset):
@@ -55,8 +56,8 @@ class UnalignedDataset(BaseDataset):
         else:   # randomize the index for domain B to avoid fixed pairs.
             index_B = random.randint(0, self.B_size - 1)
         B_path = self.B_paths[index_B]
-        A_img =  np.load(A_path)
-        B_img = np.load(B_path)
+        A_img = Image.open(A_path)
+        B_img = Image.open(B_path)
         # apply image transformation
         A = self.transform_A(A_img)
         B = self.transform_B(B_img)
