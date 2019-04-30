@@ -116,11 +116,11 @@ class CycleGANModel(BaseModel):
     # add mask channel to fake series
         """Run forward pass; called by both functions <optimize_parameters> and <test>."""
         self.fake_B = self.netG_A(self.real_A)  # G_A(A)   3 channel
-        self.fake_B_4 = torch.cat((self.fake_B, self.real_A[:, 3:]), dim=1)
+        self.fake_B_4 = torch.cat((self.fake_B, self.real_A[:, 3:, :, :]), dim=1)
         self.rec_A = self.netG_B(self.fake_B_4)   # G_B(G_A(A))   3 channel
-
+        
         self.fake_A = self.netG_B(self.real_B)  # G_B(B)   3 channel
-        self.fake_A_4 = torch.cat((self.fake_A, self.real_B[:, 3:]), dim=1)
+        self.fake_A_4 = torch.cat((self.fake_A, self.real_B[:, 3:, :, :]), dim=1)
         self.rec_B = self.netG_A(self.fake_A_4)   # G_A(G_B(B))    3 channel
 
     def backward_D_basic(self, netD, real, fake):

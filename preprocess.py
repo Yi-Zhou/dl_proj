@@ -3,7 +3,7 @@
 # In[1]:
 
 print("start")
-
+import pdb 
 import os
 import sys
 import random
@@ -111,10 +111,11 @@ class_names = ['BG', 'person', 'bicycle', 'car', 'motorcycle', 'airplane',
 
 
 IMAGE_DIRS = [
-    "cycleGan-pix2pix/datasets/horse2zebra/testA",
-    "cycleGan-pix2pix/datasets/horse2zebra/testB",
-    "cycleGan-pix2pix/datasets/horse2zebra/trainA",
-    "cycleGan-pix2pix/datasets/horse2zebra/trainB",
+    'Mask_RCNN/images'
+#     "cycleGan-pix2pix/datasets/horse2zebra/testA",
+#     "cycleGan-pix2pix/datasets/horse2zebra/testB",
+#     "cycleGan-pix2pix/datasets/horse2zebra/trainA",
+#     "cycleGan-pix2pix/datasets/horse2zebra/trainB",
 ]
 
 
@@ -137,12 +138,14 @@ def preprocess(img_dirs):
         for f_cnt, file_name in enumerate(files):
             # (H, W, C=3)
             try:
-                selected_class = 'horse' if img_dir[-1] == 'A' else 'zebra'
+                selected_class = 'horse' #if img_dir[-1] == 'A' else 'zebra'
                 image = skimage.io.imread(os.path.join(img_dir, file_name))
+                print("image: %s"%file_name)
                 res = model.detect([image])[0]
                 masks = res['masks'] # (H, W, M)
                 class_ids = res['class_ids']
                 preds = [class_names[cls_id] for cls_id in class_ids if class_names[cls_id] == selected_class]
+                print(preds)
                 if not preds:
                     print("Warning: no zebras or horses detected in", file_name)
                     bad_list['no'][base_img_dir].append(file_name)
