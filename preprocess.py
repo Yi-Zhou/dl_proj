@@ -3,7 +3,7 @@
 # In[1]:
 
 print("start")
-
+import pdb 
 import os
 import sys
 import random
@@ -132,10 +132,12 @@ def preprocess(img_dirs, selected_class="horse"):
             # (H, W, C=3)
             try:
                 image = skimage.io.imread(os.path.join(img_dir, file_name))
+                print("image: %s"%file_name)
                 res = model.detect([image])[0]
                 masks = res['masks'] # (H, W, M)
                 class_ids = res['class_ids']
                 preds = [class_names[cls_id] for cls_id in class_ids if class_names[cls_id] == selected_class]
+                print(preds)
                 if not preds:
                     print("Warning: no %s detected in. Ignored."%selected_class, file_name)
                     bad_list['no'][base_img_dir].append(file_name)

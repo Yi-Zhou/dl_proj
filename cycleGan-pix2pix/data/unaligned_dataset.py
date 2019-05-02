@@ -56,10 +56,17 @@ class UnalignedDataset(BaseDataset):
         else:   # randomize the index for domain B to avoid fixed pairs.
             index_B = random.randint(0, self.B_size - 1)
         B_path = self.B_paths[index_B]
+<<<<<<< HEAD
         A_img = Image.open(A_path)
         B_img = Image.open(B_path)
 #        A_img = np.load(A_path)
         #B_img = np.load(B_path)
+=======
+#        A_img = Image.open(A_path)
+#        B_img = Image.open(B_path)
+        A_img = np.load(A_path)
+        B_img = np.load(B_path)
+>>>>>>> 3c4044872c47a384fb80f47dc290cb4133e12bde
         # apply image transformation
         A = self.transform_A(A_img)
         B = self.transform_B(B_img)
