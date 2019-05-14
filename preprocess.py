@@ -9,12 +9,14 @@ import sys
 import random
 import math
 import numpy as np
+import scipy
 import skimage.io
 import matplotlib
 import matplotlib.pyplot as plt
 from collections import Counter, defaultdict
 import progressbar
 import traceback
+from utils import print_mask, print_mask_val
 
 # Root directory of the project
 ROOT_DIR = os.path.abspath("./Mask_RCNN/")
@@ -45,19 +47,6 @@ IMAGE_DIR = os.path.join(ROOT_DIR, "images")
 
 
 # In[2]:
-
-
-def print_mask(mask, every=8):
-    for row in range(0, mask.shape[0], every):
-        astr = ''
-        num = 0
-        for col in range(0, mask.shape[1], every):
-            if mask[row, col] == True:
-                astr += '#'
-            else:
-                astr += '0'
-        print(astr)
-    
 
 
 # In[3]:
@@ -110,19 +99,23 @@ class_names = ['BG', 'person', 'bicycle', 'car', 'motorcycle', 'airplane',
 # In[9]:
 
 
-IMAGE_DIRS = [
-    'Mask_RCNN/images'
-#     "cycleGan-pix2pix/datasets/horse2zebra/testA",
-#     "cycleGan-pix2pix/datasets/horse2zebra/testB",
-#     "cycleGan-pix2pix/datasets/horse2zebra/trainA",
-#     "cycleGan-pix2pix/datasets/horse2zebra/trainB",
+HORSE_DIRS = [
+    "cycleGan-pix2pix/datasets/horse2zebra_original/testA",
+    "cycleGan-pix2pix/datasets/horse2zebra_original/trainA",
+#    "cycleGan-pix2pix/datasets/horse2zebra/trainB",
 ]
 
+ZEBRA_DIRS = [
+#    "cycleGan-pix2pix/datasets/horse2zebra/testA",
+    "cycleGan-pix2pix/datasets/horse2zebra_original/testB",
+#    "cycleGan-pix2pix/datasets/horse2zebra/trainA",
+    "cycleGan-pix2pix/datasets/horse2zebra_original/trainB",
+]
 
 # In[10]:
 
 
-def preprocess(img_dirs):
+def preprocess(img_dirs, selected_class="horse"):
     bad_list = defaultdict(lambda: defaultdict(list))
     for img_dir in img_dirs:
         images = [skimage.io.imread]
@@ -138,7 +131,6 @@ def preprocess(img_dirs):
         for f_cnt, file_name in enumerate(files):
             # (H, W, C=3)
             try:
-                selected_class = 'horse' #if img_dir[-1] == 'A' else 'zebra'
                 image = skimage.io.imread(os.path.join(img_dir, file_name))
                 print("image: %s"%file_name)
                 res = model.detect([image])[0]
@@ -147,15 +139,10 @@ def preprocess(img_dirs):
                 preds = [class_names[cls_id] for cls_id in class_ids if class_names[cls_id] == selected_class]
                 print(preds)
                 if not preds:
-                    print("Warning: no zebras or horses detected in", file_name)
+                    print("Warning: no %s detected in. Ignored."%selected_class, file_name)
                     bad_list['no'][base_img_dir].append(file_name)
+                    continue
                 pred_cnt = Counter(preds)
-                if pred_cnt['zebra'] > 0 and img_dir[-1] == 'A':
-                    print("Warning: %d zebra(s) and %d horse(s) found in %s"%(pred_cnt['zebra'], pred_cnt['horse'], file_name))
-                    bad_list['wrong_horses'][base_img_dir].append(file_name)
-                if pred_cnt['horse'] > 0 and img_dir[-1] == 'B':
-                    print("Warning: %d zebra(s) and %d horse(s) found in %s"%(pred_cnt['zebra'], pred_cnt['horse'], file_name))
-                    bad_list['wrong_zebras'][base_img_dir].append(file_name)
                 mask_idxs = [idx for idx in range(masks.shape[2]) if class_names[class_ids[idx]] == selected_class]
 
                 # select the masks
@@ -165,12 +152,15 @@ def preprocess(img_dirs):
 
                 # logical or the masks
                 mask = np.logical_or.reduce(hz_masks, axis=2, keepdims=True)
+                map_fn = np.vectorize(lambda x: 255 if x else 127)
+                mask = map_fn(mask)
 
                 # combine original image RGB channels with the mask channel
-                catted = np.concatenate([image, mask.astype(np.int32)*255], axis=2)
+                catted = np.concatenate([image, mask.astype(np.int32)], axis=2)
                 file_name_no_ext = os.path.splitext(file_name)[0]
                 out_file_name = ".".join([file_name_no_ext, "npy"])
-                np.save(os.path.join(output_dir, out_file_name), catted)
+                scipy.misc.toimage(catted, cmin=0.0, cmax=255.).save('0.png')
+                print_mask_val(catted[:,:,3])
                 bar.update(f_cnt + 1)
             except Exception as e:
                 print("Exception when handling image %s!"%file_name)
@@ -187,9 +177,11 @@ def preprocess(img_dirs):
 
 
 # In[ ]:
+HORSE_DIRS = ["images"]
 
+if __name__ == "__main__":
 
-preprocess(IMAGE_DIRS)
+    preprocess(HORSE_DIRS, "horse")
 
 
 # In[ ]:

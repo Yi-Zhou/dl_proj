@@ -83,6 +83,7 @@ class Visualizer():
             self.web_dir = os.path.join(opt.checkpoints_dir, opt.name, 'web')
             self.img_dir = os.path.join(self.web_dir, 'images')
             print('create web directory %s...' % self.web_dir)
+            sys.stdout.flush()
             util.mkdirs([self.web_dir, self.img_dir])
         # create a logging file to store training losses
         self.log_name = os.path.join(opt.checkpoints_dir, opt.name, 'loss_log.txt')
@@ -99,6 +100,7 @@ class Visualizer():
         cmd = sys.executable + ' -m visdom.server -p %d &>/dev/null &' % self.port
         print('\n\nCould not connect to Visdom server. \n Trying to start a server....')
         print('Command: %s' % cmd)
+        sys.stdout.flush()
         Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
 
     def display_current_results(self, visuals, epoch, save_result):

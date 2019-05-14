@@ -1,0 +1,389 @@
+Using TensorFlow backend.
+WARNING:tensorflow:From /home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/mask_rcnn-2.1-py3.6.egg/mrcnn/model.py:772: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+start
+import ready
+
+Configurations:
+BACKBONE                       resnet101
+BACKBONE_STRIDES               [4, 8, 16, 32, 64]
+BATCH_SIZE                     1
+BBOX_STD_DEV                   [0.1 0.1 0.2 0.2]
+COMPUTE_BACKBONE_SHAPE         None
+DETECTION_MAX_INSTANCES        100
+DETECTION_MIN_CONFIDENCE       0.7
+DETECTION_NMS_THRESHOLD        0.3
+FPN_CLASSIF_FC_LAYERS_SIZE     1024
+GPU_COUNT                      1
+GRADIENT_CLIP_NORM             5.0
+IMAGES_PER_GPU                 1
+IMAGE_CHANNEL_COUNT            3
+IMAGE_MAX_DIM                  1024
+IMAGE_META_SIZE                93
+IMAGE_MIN_DIM                  800
+IMAGE_MIN_SCALE                0
+IMAGE_RESIZE_MODE              square
+IMAGE_SHAPE                    [1024 1024    3]
+LEARNING_MOMENTUM              0.9
+LEARNING_RATE                  0.001
+LOSS_WEIGHTS                   {'rpn_class_loss': 1.0, 'rpn_bbox_loss': 1.0, 'mrcnn_class_loss': 1.0, 'mrcnn_bbox_loss': 1.0, 'mrcnn_mask_loss': 1.0}
+MASK_POOL_SIZE                 14
+MASK_SHAPE                     [28, 28]
+MAX_GT_INSTANCES               100
+MEAN_PIXEL                     [123.7 116.8 103.9]
+MINI_MASK_SHAPE                (56, 56)
+NAME                           coco
+NUM_CLASSES                    81
+POOL_SIZE                      7
+POST_NMS_ROIS_INFERENCE        1000
+POST_NMS_ROIS_TRAINING         2000
+PRE_NMS_LIMIT                  6000
+ROI_POSITIVE_RATIO             0.33
+RPN_ANCHOR_RATIOS              [0.5, 1, 2]
+RPN_ANCHOR_SCALES              (32, 64, 128, 256, 512)
+RPN_ANCHOR_STRIDE              1
+RPN_BBOX_STD_DEV               [0.1 0.1 0.2 0.2]
+RPN_NMS_THRESHOLD              0.7
+RPN_TRAIN_ANCHORS_PER_IMAGE    256
+STEPS_PER_EPOCH                1000
+TOP_DOWN_PYRAMID_SIZE          256
+TRAIN_BN                       False
+TRAIN_ROIS_PER_IMAGE           200
+USE_MINI_MASK                  True
+USE_RPN_ROIS                   True
+VALIDATION_STEPS               50
+WEIGHT_DECAY                   0.0001
+
+
+loading weights...
+making cycleGan-pix2pix/datasets/horse2zebra/masked_testA from cycleGan-pix2pix/datasets/horse2zebra/testA
+[                                                                        ]   0%[=                                                                       ]   1%[==                                                                      ]   3%[===                                                                     ]   5%[====                                                                    ]   6%[======                                                                  ]   8%[=======                                                                 ]  10%[========                                                                ]  11%[=========                                                               ]  13%[==========                                                              ]  15%[============                                                            ]  16%[=============                                                           ]  18%[==============                                                          ]  20%[===============                                                         ]  21%[================                                                        ]  23%[==================                                                      ]  25%[===================                                                     ]  26%[====================                                                    ]  28%[=====================                                                   ]  30%[======================                                                  ]  31%[========================                                                ]  33%[=========================                                               ]  35%[==========================                                              ]  36%[===========================                                             ]  38%[============================                                            ]  40%[==============================                                          ]  41%[===============================                                         ]  43%[================================                                        ]  45%[=================================                                       ]  46%[==================================                                      ]  48%[====================================                                    ]  50%[=====================================                                   ]  51%[======================================                                  ]  53%[=======================================                                 ]  55%[========================================                                ]  56%[==========================================                              ]  58%[===========================================                             ]  60%[============================================                            ]  61%[=============================================                           ]  63%[==============================================                          ]  65%[================================================                        ]  66%[=================================================                       ]  68%[==================================================                      ]  70%[===================================================                     ]  71%[====================================================                    ]  73%[======================================================                  ]  75%[=======================================================                 ]  76%[========================================================                ]  78%[=========================================================               ]  80%[==========================================================              ]  81%[============================================================            ]  83%[=============================================================           ]  85%[==============================================================          ]  86%[===============================================================         ]  88%[================================================================        ]  90%[==================================================================      ]  91%[===================================================================     ]  93%[====================================================================    ]  95%[=====================================================================   ]  96%[======================================================================  ]  98%[========================================================================] 100%[========================================================================] 100%Warning: no zebras or horses detected in n02381460_1260.jpg
+Warning: no zebras or horses detected in n02381460_4740.jpg
+Warning: no zebras or horses detected in n02381460_4450.jpg
+Warning: no zebras or horses detected in n02381460_3120.jpg
+Warning: no zebras or horses detected in n02381460_1100.jpg
+Warning: no zebras or horses detected in n02381460_3010.jpg
+Warning: no zebras or horses detected in n02381460_1090.jpg
+Warning: no zebras or horses detected in n02381460_6790.jpg
+Warning: no zebras or horses detected in n02381460_7400.jpg
+Warning: no zebras or horses detected in n02381460_2890.jpg
+Warning: no zebras or horses detected in n02381460_440.jpg
+Warning: no zebras or horses detected in n02381460_4800.jpg
+Warning: no zebras or horses detected in n02381460_4660.jpg
+Warning: no zebras or horses detected in n02381460_7890.jpg
+Warning: no zebras or horses detected in n02381460_7620.jpg
+making cycleGan-pix2pix/datasets/horse2zebra/masked_testB from cycleGan-pix2pix/datasets/horse2zebra/testB
+
+[                                                                        ]   0%[=                                                                       ]   1%[==                                                                      ]   2%[===                                                                     ]   4%[====                                                                    ]   5%[=====                                                                   ]   7%[======                                                                  ]   8%[=======                                                                 ]  10%[========                                                                ]  11%[=========                                                               ]  12%[==========                                                              ]  14%[===========                                                             ]  15%[============                                                            ]  17%[=============                                                           ]  18%[==============                                                          ]  20%[===============                                                         ]  21%[================                                                        ]  22%[=================                                                       ]  24%[==================                                                      ]  25%[===================                                                     ]  27%[====================                                                    ]  28%[=====================                                                   ]  30%[======================                                                  ]  31%[=======================                                                 ]  32%[========================                                                ]  34%[=========================                                               ]  35%[==========================                                              ]  37%[===========================                                             ]  38%[============================                                            ]  40%[=============================                                           ]  41%[==============================                                          ]  42%[===============================                                         ]  44%[================================                                        ]  45%[=================================                                       ]  47%[==================================                                      ]  48%[====================================                                    ]  50%[=====================================                                   ]  51%[======================================                                  ]  52%[=======================================                                 ]  54%[========================================                                ]  55%[=========================================                               ]  57%[==========================================                              ]  58%[===========================================                             ]  60%[============================================                            ]  61%[=============================================                           ]  62%[==============================================                          ]  64%[===============================================                         ]  65%[================================================                        ]  67%[=================================================                       ]  68%[==================================================                      ]  70%[===================================================                     ]  71%[====================================================                    ]  72%[=====================================================                   ]  74%[======================================================                  ]  75%[=======================================================                 ]  77%[========================================================                ]  78%[=========================================================               ]  80%[==========================================================              ]  81%[===========================================================             ]  82%[============================================================            ]  84%[=============================================================           ]  85%[==============================================================          ]  87%[===============================================================         ]  88%[================================================================        ]  90%[=================================================================       ]  91%[==================================================================      ]  92%[===================================================================     ]  94%[====================================================================    ]  95%[=====================================================================   ]  97%[======================================================================  ]  98%[========================================================================] 100%[========================================================================] 100%Warning: no zebras or horses detected in n02391049_5030.jpg
+Warning: no zebras or horses detected in n02391049_9350.jpg
+Warning: no zebras or horses detected in n02391049_170.jpg
+making cycleGan-pix2pix/datasets/horse2zebra/masked_trainA from cycleGan-pix2pix/datasets/horse2zebra/trainA
+
+[                                                                        ]   0%[                                                                        ]   1%[=                                                                       ]   2%[==                                                                      ]   3%[==                                                                      ]   4%[===                                                                     ]   5%[====                                                                    ]   6%[=====                                                                   ]   7%[=====                                                                   ]   8%[======                                                                  ]   9%[=======                                                                 ]  10%[========                                                                ]  11%[========                                                                ]  12%[=========                                                               ]  13%[==========                                                              ]  14%[===========                                                             ]  15%[===========                                                             ]  16%[============                                                            ]  17%[=============                                                           ]  18%[==============                                                          ]  19%[==============                                                          ]  20%[===============                                                         ]  21%[================                                                        ]  22%[=================                                                       ]  23%[=================                                                       ]  24%[==================                                                      ]  25%[===================                                                     ]  26%[====================                                                    ]  27%[====================                                                    ]  28%[=====================                                                   ]  29%[======================                                                  ]  30%[=======================                                                 ]  31%[=======================                                                 ]  32%[========================                                                ]  34%[=========================                                               ]  35%[=========================                                               ]  36%[==========================                                              ]  37%[===========================                                             ]  38%[============================                                            ]  39%[============================                                            ]  40%[=============================                                           ]  41%[==============================                                          ]  42%[===============================                                         ]  43%[===============================                                         ]  44%[================================                                        ]  45%[=================================                                       ]  46%[==================================                                      ]  47%[==================================                                      ]  48%[===================================                                     ]  49%[====================================                                    ]  50%[=====================================                                   ]  51%[=====================================                                   ]  52%[======================================                                  ]  53%[=======================================                                 ]  54%[========================================                                ]  55%[========================================                                ]  56%[=========================================                               ]  57%[==========================================                              ]  58%[===========================================                             ]  59%[===========================================                             ]  60%[============================================                            ]  61%[=============================================                           ]  62%[==============================================                          ]  63%[==============================================                          ]  64%[===============================================                         ]  65%[================================================                        ]  67%[================================================                        ]  68%[=================================================                       ]  69%[==================================================                      ]  70%[===================================================                     ]  71%[===================================================                     ]  72%[====================================================                    ]  73%[=====================================================                   ]  74%[======================================================                  ]  75%[======================================================                  ]  76%[=======================================================                 ]  77%[========================================================                ]  78%[=========================================================               ]  79%[=========================================================               ]  80%[==========================================================              ]  81%[===========================================================             ]  82%[============================================================            ]  83%[============================================================            ]  84%[=============================================================           ]  85%[==============================================================          ]  86%[===============================================================         ]  87%[===============================================================         ]  88%[================================================================        ]  89%[=================================================================       ]  90%[==================================================================      ]  91%[==================================================================      ]  92%[===================================================================     ]  93%[====================================================================    ]  94%[=====================================================================   ]  95%[=====================================================================   ]  96%[======================================================================  ]  97%[======================================================================= ]  98%[========================================================================] 100%[========================================================================] 100%Warning: no zebras or horses detected in n02381460_5408.jpg
+Warning: no zebras or horses detected in n02381460_5286.jpg
+Warning: no zebras or horses detected in n02381460_1562.jpg
+Warning: no zebras or horses detected in n02381460_912.jpg
+Warning: no zebras or horses detected in n02381460_6876.jpg
+Warning: no zebras or horses detected in n02381460_1108.jpg
+Warning: no zebras or horses detected in n02381460_274.jpg
+Warning: no zebras or horses detected in n02381460_7165.jpg
+Warning: no zebras or horses detected in n02381460_1743.jpg
+Warning: no zebras or horses detected in n02381460_5761.jpg
+Warning: no zebras or horses detected in n02381460_3732.jpg
+Warning: no zebras or horses detected in n02381460_1155.jpg
+Warning: no zebras or horses detected in n02381460_1865.jpg
+Warning: no zebras or horses detected in n02381460_3412.jpg
+Warning: no zebras or horses detected in n02381460_1144.jpg
+Warning: no zebras or horses detected in n02381460_2089.jpg
+Warning: no zebras or horses detected in n02381460_3085.jpg
+Warning: no zebras or horses detected in n02381460_1388.jpg
+Warning: no zebras or horses detected in n02381460_519.jpg
+Warning: no zebras or horses detected in n02381460_3566.jpg
+Warning: no zebras or horses detected in n02381460_2414.jpg
+Warning: no zebras or horses detected in n02381460_567.jpg
+Warning: no zebras or horses detected in n02381460_1098.jpg
+Warning: no zebras or horses detected in n02381460_1262.jpg
+Warning: no zebras or horses detected in n02381460_5374.jpg
+Warning: no zebras or horses detected in n02381460_8862.jpg
+Warning: no zebras or horses detected in n02381460_4695.jpg
+Warning: no zebras or horses detected in n02381460_1909.jpg
+Warning: no zebras or horses detected in n02381460_1361.jpg
+Warning: no zebras or horses detected in n02381460_2465.jpg
+Warning: no zebras or horses detected in n02381460_1635.jpg
+Warning: no zebras or horses detected in n02381460_6152.jpg
+Warning: no zebras or horses detected in n02381460_1916.jpg
+Warning: no zebras or horses detected in n02381460_3075.jpg
+Warning: no zebras or horses detected in n02381460_6822.jpg
+Warning: no zebras or horses detected in n02381460_2564.jpg
+Warning: no zebras or horses detected in n02381460_4665.jpg
+Warning: no zebras or horses detected in n02381460_7548.jpg
+Warning: no zebras or horses detected in n02381460_6373.jpg
+Warning: no zebras or horses detected in n02381460_2198.jpg
+Warning: no zebras or horses detected in n02381460_5601.jpg
+Warning: no zebras or horses detected in n02381460_8527.jpg
+Warning: no zebras or horses detected in n02381460_1973.jpg
+Warning: no zebras or horses detected in n02381460_1297.jpg
+Warning: no zebras or horses detected in n02381460_1637.jpg
+Warning: no zebras or horses detected in n02381460_2433.jpg
+Warning: no zebras or horses detected in n02381460_73.jpg
+Warning: no zebras or horses detected in n02381460_7806.jpg
+Warning: no zebras or horses detected in n02381460_834.jpg
+Warning: no zebras or horses detected in n02381460_4748.jpg
+Warning: no zebras or horses detected in n02381460_2325.jpg
+Warning: no zebras or horses detected in n02381460_1874.jpg
+Warning: no zebras or horses detected in n02381460_4307.jpg
+Warning: no zebras or horses detected in n02381460_3902.jpg
+Warning: no zebras or horses detected in n02381460_7571.jpg
+Warning: no zebras or horses detected in n02381460_2612.jpg
+Warning: no zebras or horses detected in n02381460_2327.jpg
+Warning: no zebras or horses detected in n02381460_1519.jpg
+Warning: no zebras or horses detected in n02381460_757.jpg
+Warning: no zebras or horses detected in n02381460_2269.jpg
+Warning: no zebras or horses detected in n02381460_381.jpg
+Warning: no zebras or horses detected in n02381460_1793.jpg
+Warning: no zebras or horses detected in n02381460_4467.jpg
+Warning: no zebras or horses detected in n02381460_718.jpg
+Warning: no zebras or horses detected in n02381460_1578.jpg
+Warning: no zebras or horses detected in n02381460_4597.jpg
+Warning: no zebras or horses detected in n02381460_4474.jpg
+Warning: no zebras or horses detected in n02381460_6403.jpg
+Warning: no zebras or horses detected in n02381460_1084.jpg
+Warning: no zebras or horses detected in n02381460_4497.jpg
+Warning: no zebras or horses detected in n02381460_674.jpg
+Warning: no zebras or horses detected in n02381460_1258.jpg
+Warning: no zebras or horses detected in n02381460_108.jpg
+Warning: no zebras or horses detected in n02381460_5538.jpg
+Warning: no zebras or horses detected in n02381460_1696.jpg
+Warning: no zebras or horses detected in n02381460_8765.jpg
+Warning: no zebras or horses detected in n02381460_3175.jpg
+Warning: no zebras or horses detected in n02381460_1168.jpg
+Warning: no zebras or horses detected in n02381460_825.jpg
+Warning: no zebras or horses detected in n02381460_4482.jpg
+Warning: no zebras or horses detected in n02381460_4151.jpg
+making cycleGan-pix2pix/datasets/horse2zebra/masked_trainB from cycleGan-pix2pix/datasets/horse2zebra/trainB
+
+[                                                                        ]   0%[                                                                        ]   1%[=                                                                       ]   2%[==                                                                      ]   3%[===                                                                     ]   4%[===                                                                     ]   5%Traceback (most recent call last):
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/arraypad.py", line 935, in _normalize_shape
+    shape_arr = np.broadcast_to(shape_arr, (ndims, 2))
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/stride_tricks.py", line 176, in broadcast_to
+    return _broadcast_to(array, shape, subok=subok, readonly=True)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/stride_tricks.py", line 128, in _broadcast_to
+    op_flags=[op_flag], itershape=shape, order='C')
+ValueError: operands could not be broadcast together with remapped shapes [original->remapped]: (3,2) and requested shape (2,2)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "preprocess.py", line 142, in preprocess
+    res = model.detect([image])[0]
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/mask_rcnn-2.1-py3.6.egg/mrcnn/model.py", line 2503, in detect
+    molded_images, image_metas, windows = self.mold_inputs(images)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/mask_rcnn-2.1-py3.6.egg/mrcnn/model.py", line 2401, in mold_inputs
+    mode=self.config.IMAGE_RESIZE_MODE)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/mask_rcnn-2.1-py3.6.egg/mrcnn/utils.py", line 458, in resize_image
+    image = np.pad(image, padding, mode='constant', constant_values=0)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/arraypad.py", line 1200, in pad
+    pad_width = _validate_lengths(narray, pad_width)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/arraypad.py", line 979, in _validate_lengths
+    normshp = _normalize_shape(narray, number_elements)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/arraypad.py", line 938, in _normalize_shape
+    raise ValueError(fmt % (shape,))
+ValueError: Unable to create correctly shaped tuple from [(112, 112), (112, 112), (0, 0)]
+[====                                                                    ]   6%[=====                                                                   ]   7%[======                                                                  ]   8%Traceback (most recent call last):
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/arraypad.py", line 935, in _normalize_shape
+    shape_arr = np.broadcast_to(shape_arr, (ndims, 2))
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/stride_tricks.py", line 176, in broadcast_to
+    return _broadcast_to(array, shape, subok=subok, readonly=True)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/stride_tricks.py", line 128, in _broadcast_to
+    op_flags=[op_flag], itershape=shape, order='C')
+ValueError: operands could not be broadcast together with remapped shapes [original->remapped]: (3,2) and requested shape (2,2)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "preprocess.py", line 142, in preprocess
+    res = model.detect([image])[0]
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/mask_rcnn-2.1-py3.6.egg/mrcnn/model.py", line 2503, in detect
+    molded_images, image_metas, windows = self.mold_inputs(images)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/mask_rcnn-2.1-py3.6.egg/mrcnn/model.py", line 2401, in mold_inputs
+    mode=self.config.IMAGE_RESIZE_MODE)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/mask_rcnn-2.1-py3.6.egg/mrcnn/utils.py", line 458, in resize_image
+    image = np.pad(image, padding, mode='constant', constant_values=0)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/arraypad.py", line 1200, in pad
+    pad_width = _validate_lengths(narray, pad_width)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/arraypad.py", line 979, in _validate_lengths
+    normshp = _normalize_shape(narray, number_elements)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/arraypad.py", line 938, in _normalize_shape
+    raise ValueError(fmt % (shape,))
+ValueError: Unable to create correctly shaped tuple from [(112, 112), (112, 112), (0, 0)]
+[======                                                                  ]   9%[=======                                                                 ]  10%[========                                                                ]  11%[=========                                                               ]  12%Traceback (most recent call last):
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/arraypad.py", line 935, in _normalize_shape
+    shape_arr = np.broadcast_to(shape_arr, (ndims, 2))
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/stride_tricks.py", line 176, in broadcast_to
+    return _broadcast_to(array, shape, subok=subok, readonly=True)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/stride_tricks.py", line 128, in _broadcast_to
+    op_flags=[op_flag], itershape=shape, order='C')
+ValueError: operands could not be broadcast together with remapped shapes [original->remapped]: (3,2) and requested shape (2,2)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "preprocess.py", line 142, in preprocess
+    res = model.detect([image])[0]
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/mask_rcnn-2.1-py3.6.egg/mrcnn/model.py", line 2503, in detect
+    molded_images, image_metas, windows = self.mold_inputs(images)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/mask_rcnn-2.1-py3.6.egg/mrcnn/model.py", line 2401, in mold_inputs
+    mode=self.config.IMAGE_RESIZE_MODE)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/mask_rcnn-2.1-py3.6.egg/mrcnn/utils.py", line 458, in resize_image
+    image = np.pad(image, padding, mode='constant', constant_values=0)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/arraypad.py", line 1200, in pad
+    pad_width = _validate_lengths(narray, pad_width)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/arraypad.py", line 979, in _validate_lengths
+    normshp = _normalize_shape(narray, number_elements)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/arraypad.py", line 938, in _normalize_shape
+    raise ValueError(fmt % (shape,))
+ValueError: Unable to create correctly shaped tuple from [(112, 112), (112, 112), (0, 0)]
+[=========                                                               ]  13%[==========                                                              ]  14%[===========                                                             ]  15%[============                                                            ]  16%[============                                                            ]  17%[=============                                                           ]  18%[==============                                                          ]  19%[===============                                                         ]  20%[===============                                                         ]  22%[================                                                        ]  23%[=================                                                       ]  24%[==================                                                      ]  25%[==================                                                      ]  26%[===================                                                     ]  27%[====================                                                    ]  28%[=====================                                                   ]  29%[=====================                                                   ]  30%[======================                                                  ]  31%[=======================                                                 ]  32%[========================                                                ]  33%[========================                                                ]  34%[=========================                                               ]  35%Traceback (most recent call last):
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/arraypad.py", line 935, in _normalize_shape
+    shape_arr = np.broadcast_to(shape_arr, (ndims, 2))
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/stride_tricks.py", line 176, in broadcast_to
+    return _broadcast_to(array, shape, subok=subok, readonly=True)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/stride_tricks.py", line 128, in _broadcast_to
+    op_flags=[op_flag], itershape=shape, order='C')
+ValueError: operands could not be broadcast together with remapped shapes [original->remapped]: (3,2) and requested shape (2,2)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "preprocess.py", line 142, in preprocess
+    res = model.detect([image])[0]
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/mask_rcnn-2.1-py3.6.egg/mrcnn/model.py", line 2503, in detect
+    molded_images, image_metas, windows = self.mold_inputs(images)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/mask_rcnn-2.1-py3.6.egg/mrcnn/model.py", line 2401, in mold_inputs
+    mode=self.config.IMAGE_RESIZE_MODE)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/mask_rcnn-2.1-py3.6.egg/mrcnn/utils.py", line 458, in resize_image
+    image = np.pad(image, padding, mode='constant', constant_values=0)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/arraypad.py", line 1200, in pad
+    pad_width = _validate_lengths(narray, pad_width)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/arraypad.py", line 979, in _validate_lengths
+    normshp = _normalize_shape(narray, number_elements)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/arraypad.py", line 938, in _normalize_shape
+    raise ValueError(fmt % (shape,))
+ValueError: Unable to create correctly shaped tuple from [(112, 112), (112, 112), (0, 0)]
+[==========================                                              ]  36%[===========================                                             ]  37%[===========================                                             ]  38%[============================                                            ]  39%[=============================                                           ]  40%[==============================                                          ]  41%[==============================                                          ]  43%[===============================                                         ]  44%[================================                                        ]  45%[=================================                                       ]  46%[==================================                                      ]  47%[==================================                                      ]  48%[===================================                                     ]  49%[====================================                                    ]  50%[=====================================                                   ]  51%Traceback (most recent call last):
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/arraypad.py", line 935, in _normalize_shape
+    shape_arr = np.broadcast_to(shape_arr, (ndims, 2))
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/stride_tricks.py", line 176, in broadcast_to
+    return _broadcast_to(array, shape, subok=subok, readonly=True)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/stride_tricks.py", line 128, in _broadcast_to
+    op_flags=[op_flag], itershape=shape, order='C')
+ValueError: operands could not be broadcast together with remapped shapes [original->remapped]: (3,2) and requested shape (2,2)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "preprocess.py", line 142, in preprocess
+    res = model.detect([image])[0]
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/mask_rcnn-2.1-py3.6.egg/mrcnn/model.py", line 2503, in detect
+    molded_images, image_metas, windows = self.mold_inputs(images)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/mask_rcnn-2.1-py3.6.egg/mrcnn/model.py", line 2401, in mold_inputs
+    mode=self.config.IMAGE_RESIZE_MODE)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/mask_rcnn-2.1-py3.6.egg/mrcnn/utils.py", line 458, in resize_image
+    image = np.pad(image, padding, mode='constant', constant_values=0)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/arraypad.py", line 1200, in pad
+    pad_width = _validate_lengths(narray, pad_width)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/arraypad.py", line 979, in _validate_lengths
+    normshp = _normalize_shape(narray, number_elements)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/arraypad.py", line 938, in _normalize_shape
+    raise ValueError(fmt % (shape,))
+ValueError: Unable to create correctly shaped tuple from [(112, 112), (112, 112), (0, 0)]
+Traceback (most recent call last):
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/arraypad.py", line 935, in _normalize_shape
+    shape_arr = np.broadcast_to(shape_arr, (ndims, 2))
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/stride_tricks.py", line 176, in broadcast_to
+    return _broadcast_to(array, shape, subok=subok, readonly=True)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/stride_tricks.py", line 128, in _broadcast_to
+    op_flags=[op_flag], itershape=shape, order='C')
+ValueError: operands could not be broadcast together with remapped shapes [original->remapped]: (3,2) and requested shape (2,2)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "preprocess.py", line 142, in preprocess
+    res = model.detect([image])[0]
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/mask_rcnn-2.1-py3.6.egg/mrcnn/model.py", line 2503, in detect
+    molded_images, image_metas, windows = self.mold_inputs(images)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/mask_rcnn-2.1-py3.6.egg/mrcnn/model.py", line 2401, in mold_inputs
+    mode=self.config.IMAGE_RESIZE_MODE)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/mask_rcnn-2.1-py3.6.egg/mrcnn/utils.py", line 458, in resize_image
+    image = np.pad(image, padding, mode='constant', constant_values=0)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/arraypad.py", line 1200, in pad
+    pad_width = _validate_lengths(narray, pad_width)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/arraypad.py", line 979, in _validate_lengths
+    normshp = _normalize_shape(narray, number_elements)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/arraypad.py", line 938, in _normalize_shape
+    raise ValueError(fmt % (shape,))
+ValueError: Unable to create correctly shaped tuple from [(112, 112), (112, 112), (0, 0)]
+[=====================================                                   ]  52%[======================================                                  ]  53%[=======================================                                 ]  54%[========================================                                ]  55%[========================================                                ]  56%[=========================================                               ]  57%[==========================================                              ]  58%[===========================================                             ]  59%[===========================================                             ]  60%[============================================                            ]  61%[=============================================                           ]  62%[==============================================                          ]  64%[==============================================                          ]  65%[===============================================                         ]  66%[================================================                        ]  67%[=================================================                       ]  68%[=================================================                       ]  69%[==================================================                      ]  70%[===================================================                     ]  71%[====================================================                    ]  72%[====================================================                    ]  73%[=====================================================                   ]  74%[======================================================                  ]  75%[=======================================================                 ]  76%[=======================================================                 ]  77%[========================================================                ]  78%[=========================================================               ]  79%[==========================================================              ]  80%[==========================================================              ]  81%[===========================================================             ]  82%[============================================================            ]  83%[=============================================================           ]  85%[=============================================================           ]  86%[==============================================================          ]  87%[===============================================================         ]  88%[================================================================        ]  89%[================================================================        ]  90%[=================================================================       ]  91%[==================================================================      ]  92%[===================================================================     ]  93%[====================================================================    ]  94%[====================================================================    ]  95%[=====================================================================   ]  96%[======================================================================  ]  97%[======================================================================= ]  98%Traceback (most recent call last):
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/arraypad.py", line 935, in _normalize_shape
+    shape_arr = np.broadcast_to(shape_arr, (ndims, 2))
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/stride_tricks.py", line 176, in broadcast_to
+    return _broadcast_to(array, shape, subok=subok, readonly=True)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/stride_tricks.py", line 128, in _broadcast_to
+    op_flags=[op_flag], itershape=shape, order='C')
+ValueError: operands could not be broadcast together with remapped shapes [original->remapped]: (3,2) and requested shape (2,2)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "preprocess.py", line 142, in preprocess
+    res = model.detect([image])[0]
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/mask_rcnn-2.1-py3.6.egg/mrcnn/model.py", line 2503, in detect
+    molded_images, image_metas, windows = self.mold_inputs(images)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/mask_rcnn-2.1-py3.6.egg/mrcnn/model.py", line 2401, in mold_inputs
+    mode=self.config.IMAGE_RESIZE_MODE)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/mask_rcnn-2.1-py3.6.egg/mrcnn/utils.py", line 458, in resize_image
+    image = np.pad(image, padding, mode='constant', constant_values=0)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/arraypad.py", line 1200, in pad
+    pad_width = _validate_lengths(narray, pad_width)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/arraypad.py", line 979, in _validate_lengths
+    normshp = _normalize_shape(narray, number_elements)
+  File "/home/ubuntu/anaconda3/envs/tensorflow_p36/lib/python3.6/site-packages/numpy/lib/arraypad.py", line 938, in _normalize_shape
+    raise ValueError(fmt % (shape,))
+ValueError: Unable to create correctly shaped tuple from [(112, 112), (112, 112), (0, 0)]
+[======================================================================= ]  99%[========================================================================] 100%Warning: no zebras or horses detected in n02391049_8148.jpg
+Warning: no zebras or horses detected in n02391049_4218.jpg
+Exception when handling image n02391049_9726.jpg!
+Exception when handling image n02391049_226.jpg!
+Exception when handling image n02391049_2361.jpg!
+Warning: no zebras or horses detected in n02391049_10596.jpg
+Warning: no zebras or horses detected in n02391049_11063.jpg
+Warning: no zebras or horses detected in n02391049_7812.jpg
+Warning: no zebras or horses detected in n02391049_11166.jpg
+Warning: no zebras or horses detected in n02391049_7.jpg
+Exception when handling image n02391049_7503.jpg!
+Warning: no zebras or horses detected in n02391049_1131.jpg
+Exception when handling image n02391049_2341.jpg!
+Exception when handling image n02391049_2757.jpg!
+Warning: no zebras or horses detected in n02391049_3436.jpg
+Warning: no zebras or horses detected in n02391049_3509.jpg
+Warning: no zebras or horses detected in n02391049_10576.jpg
+Warning: no zebras or horses detected in n02391049_2606.jpg
+Warning: no zebras or horses detected in n02391049_2817.jpg
+Warning: no zebras or horses detected in n02391049_5093.jpg
+Warning: no zebras or horses detected in n02391049_2856.jpg
+Warning: no zebras or horses detected in n02391049_9016.jpg
+Warning: no zebras or horses detected in n02391049_4475.jpg
+Warning: no zebras or horses detected in n02391049_2999.jpg
+Warning: no zebras or horses detected in n02391049_1145.jpg
+Warning: no zebras or horses detected in n02391049_5791.jpg
+Warning: no zebras or horses detected in n02391049_2183.jpg
+Warning: no zebras or horses detected in n02391049_627.jpg
+Exception when handling image n02391049_8008.jpg!
+
+Images with warnings:
+{'no': {'testA': ['n02381460_1260.jpg', 'n02381460_4740.jpg', 'n02381460_4450.jpg', 'n02381460_3120.jpg', 'n02381460_1100.jpg', 'n02381460_3010.jpg', 'n02381460_1090.jpg', 'n02381460_6790.jpg', 'n02381460_7400.jpg', 'n02381460_2890.jpg', 'n02381460_440.jpg', 'n02381460_4800.jpg', 'n02381460_4660.jpg', 'n02381460_7890.jpg', 'n02381460_7620.jpg'], 'testB': ['n02391049_5030.jpg', 'n02391049_9350.jpg', 'n02391049_170.jpg'], 'trainA': ['n02381460_5408.jpg', 'n02381460_5286.jpg', 'n02381460_1562.jpg', 'n02381460_912.jpg', 'n02381460_6876.jpg', 'n02381460_1108.jpg', 'n02381460_274.jpg', 'n02381460_7165.jpg', 'n02381460_1743.jpg', 'n02381460_5761.jpg', 'n02381460_3732.jpg', 'n02381460_1155.jpg', 'n02381460_1865.jpg', 'n02381460_3412.jpg', 'n02381460_1144.jpg', 'n02381460_2089.jpg', 'n02381460_3085.jpg', 'n02381460_1388.jpg', 'n02381460_519.jpg', 'n02381460_3566.jpg', 'n02381460_2414.jpg', 'n02381460_567.jpg', 'n02381460_1098.jpg', 'n02381460_1262.jpg', 'n02381460_5374.jpg', 'n02381460_8862.jpg', 'n02381460_4695.jpg', 'n02381460_1909.jpg', 'n02381460_1361.jpg', 'n02381460_2465.jpg', 'n02381460_1635.jpg', 'n02381460_6152.jpg', 'n02381460_1916.jpg', 'n02381460_3075.jpg', 'n02381460_6822.jpg', 'n02381460_2564.jpg', 'n02381460_4665.jpg', 'n02381460_7548.jpg', 'n02381460_6373.jpg', 'n02381460_2198.jpg', 'n02381460_5601.jpg', 'n02381460_8527.jpg', 'n02381460_1973.jpg', 'n02381460_1297.jpg', 'n02381460_1637.jpg', 'n02381460_2433.jpg', 'n02381460_73.jpg', 'n02381460_7806.jpg', 'n02381460_834.jpg', 'n02381460_4748.jpg', 'n02381460_2325.jpg', 'n02381460_1874.jpg', 'n02381460_4307.jpg', 'n02381460_3902.jpg', 'n02381460_7571.jpg', 'n02381460_2612.jpg', 'n02381460_2327.jpg', 'n02381460_1519.jpg', 'n02381460_757.jpg', 'n02381460_2269.jpg', 'n02381460_381.jpg', 'n02381460_1793.jpg', 'n02381460_4467.jpg', 'n02381460_718.jpg', 'n02381460_1578.jpg', 'n02381460_4597.jpg', 'n02381460_4474.jpg', 'n02381460_6403.jpg', 'n02381460_1084.jpg', 'n02381460_4497.jpg', 'n02381460_674.jpg', 'n02381460_1258.jpg', 'n02381460_108.jpg', 'n02381460_5538.jpg', 'n02381460_1696.jpg', 'n02381460_8765.jpg', 'n02381460_3175.jpg', 'n02381460_1168.jpg', 'n02381460_825.jpg', 'n02381460_4482.jpg', 'n02381460_4151.jpg'], 'trainB': ['n02391049_8148.jpg', 'n02391049_4218.jpg', 'n02391049_10596.jpg', 'n02391049_11063.jpg', 'n02391049_7812.jpg', 'n02391049_11166.jpg', 'n02391049_7.jpg', 'n02391049_1131.jpg', 'n02391049_3436.jpg', 'n02391049_3509.jpg', 'n02391049_10576.jpg', 'n02391049_2606.jpg', 'n02391049_2817.jpg', 'n02391049_5093.jpg', 'n02391049_2856.jpg', 'n02391049_9016.jpg', 'n02391049_4475.jpg', 'n02391049_2999.jpg', 'n02391049_1145.jpg', 'n02391049_5791.jpg', 'n02391049_2183.jpg', 'n02391049_627.jpg']}}
